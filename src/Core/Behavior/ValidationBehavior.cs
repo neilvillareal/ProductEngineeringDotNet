@@ -25,8 +25,8 @@
             var context = new ValidationContext<TRequest>(request);
 
             var errorsDictionary = _validators
-                .Select(x => x.Validate(context))
-                .SelectMany(x => x.Errors)
+                .Select(x => x.ValidateAsync(context))
+                .SelectMany(x => x.Result.Errors)
                 .Where(x => x != null)
                 .GroupBy(
                     x => x.PropertyName,

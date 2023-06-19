@@ -12,6 +12,7 @@
     <None Remove="Validations\" />
     <None Remove="Shared\" />
     <None Remove="Behavior\" />
+    <None Remove="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Command\" />
@@ -19,6 +20,7 @@
     <Folder Include="Validations\" />
     <Folder Include="Shared\" />
     <Folder Include="Behavior\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />

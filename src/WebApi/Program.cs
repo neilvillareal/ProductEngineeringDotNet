@@ -1,8 +1,10 @@
 ﻿using Core;
 using Core.Behavior;
+using Core.Services;
 using FluentValidation;
 using Infrastructure;
 using Infrastructure.Data;
+using Infrastructure.Services;
 using MediatR;
 using WebApi.Middleware;
 
@@ -26,6 +28,7 @@ builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBeh
 builder.Services.AddValidatorsFromAssembly(typeof(CoreEntryPoint).Assembly, includeInternalTypes: true);
 
 builder.Services.AddTransient<ExceptionHandlingMiddleware>();
+builder.Services.AddTransient<IUserService, UserService>();
 
 var app = builder.Build();
 

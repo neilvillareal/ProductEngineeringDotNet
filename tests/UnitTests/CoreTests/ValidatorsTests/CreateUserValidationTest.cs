@@ -3,9 +3,12 @@
     using System;
     using System.ComponentModel.DataAnnotations;
     using Core.Command;
+    using Core.Services;
     using Core.Validations;
     using Domain.Entities;
     using FluentValidation.TestHelper;
+    using Infrastructure.Services;
+    using Moq;
 
     public class CreateUserValidationTest
 	{
@@ -13,11 +16,11 @@
 
         private User user;
 
+        private Mock<IUserService> userService;
+
         [SetUp]
         public void Setup()
         {
-            validator = new CreateUserValidator();
-
             user = new User
             {
                 FirstName = "Neil",
@@ -49,16 +52,20 @@
                     }
                 }
             };
+
+            userService = new Mock<IUserService>();
+
+            validator = new CreateUserValidator(userService.Object);
         }
 
         [Test]
-		public void Should_ReturnValidationErrorOnAddress_When_CityStreet_IsNullOrEmpty()
+		public async Task Should_ReturnValidationErrorOnAddress_When_CityStreet_IsNullOrEmpty()
 		{
             user.Address.City = null;
             user.Address.Street = string.Empty;
             var command = new CreateUserCommand(user);
 
-            var result = validator.TestValidate(command);
+            var result = await validator.TestValidateAsync(command);
 
             result.ShouldHaveValidationErrorFor(a => a.User.Address.Street)
                 .WithErrorMessage("'Street' must not be empty.");
@@ -69,16 +76,29 @@
         }
 
         [Test]
-        public void Should_ReturnValidationErrorOnEmployments_When_EndDate_IsLessThanOrEqualToStartDate()
+        public async Task Should_ReturnValidationErrorOnEmployments_When_EndDate_IsLessThanOrEqualToStartDate()
         {
             user.Employments[0].StartDate = DateTime.Now;
             user.Employments[0].EndDate = DateTime.Now.AddDays(-2);
 
             var command = new CreateUserCommand(user);
 
-            var result = validator.TestValidate(command);
+            var result = await validator.TestValidateAsync(command);
 
             Assert.That(result.Errors[0].ErrorMessage, Is.EqualTo("'End Date' should be greater that 'Start Date'"));
+        }
+
+        [Test]
+        public async Task Should_ReturnValidationErrorOnEmail_When_Email_AlreadyExist()
+        {
+            var command = new CreateUserCommand(user);
+
+            userService.Setup(m => m.GetUserByEmailAddressAsync("neilvillareal@gmail.com")).Returns(Task.FromResult(user));
+
+            var result = await validator.TestValidateAsync(command);
+
+            result.ShouldHaveValidationErrorFor(a => a.User.Email)
+               .WithErrorMessage("'Email' already exists");
         }
 
     }
