@@ -54,7 +54,6 @@
             };
 
             userService = new Mock<IUserService>();
-
             validator = new CreateUserValidator(userService.Object);
         }
 
@@ -93,7 +92,7 @@
         {
             var command = new CreateUserCommand(user);
 
-            userService.Setup(m => m.GetUserByEmailAddressAsync("neilvillareal@gmail.com")).Returns(Task.FromResult(user));
+            userService.Setup(m => m.GetUserByEmailAddressAsync("neilvillareal@gmail.com")).ReturnsAsync(user);
 
             var result = await validator.TestValidateAsync(command);
 

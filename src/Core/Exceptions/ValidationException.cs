@@ -1,7 +1,8 @@
-﻿using System;
-using ApplicationException = Domain.Exceptions.ApplicationException;
-namespace Core.Exceptions
+﻿namespace Core.Exceptions
 {
+    using System;
+    using ApplicationException = Domain.Exceptions.ApplicationException;
+
     public sealed class ValidationException : ApplicationException
     {
         public ValidationException(IReadOnlyDictionary<string, string[]> errorsDictionary)

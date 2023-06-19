@@ -31,7 +31,7 @@
         {
             return await _appDbContext.Users
                             .AsNoTracking()
-                            .FirstOrDefaultAsync(u => u.Email.Equals(emailAddress, StringComparison.Ordinal));
+                            .FirstOrDefaultAsync(u => u.Email.Equals(emailAddress, StringComparison.OrdinalIgnoreCase));
         }
 
         public async Task<User> GetUserById(int id, CancellationToken cancellationToken)
