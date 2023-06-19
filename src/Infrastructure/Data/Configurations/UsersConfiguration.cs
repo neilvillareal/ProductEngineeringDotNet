@@ -27,6 +27,8 @@
             builder.HasIndex(c => c.Email)
                 .IsUnique();
 
+            builder.HasMany(a => a.Employments);
+
         }
     }
 }

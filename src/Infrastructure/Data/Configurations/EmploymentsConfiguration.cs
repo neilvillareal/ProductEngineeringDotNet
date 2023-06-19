@@ -1,10 +1,10 @@
-﻿using System;
-using Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace Infrastructure.Data.Configurations
+﻿namespace Infrastructure.Data.Configurations
 {
+    using System;
+    using Domain.Entities;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
     public class EmploymentsConfiguration : IEntityTypeConfiguration<Employment>
     {
         public void Configure(EntityTypeBuilder<Employment> builder)

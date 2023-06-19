@@ -27,6 +27,7 @@
 
             RuleFor(e => e.EndDate)
                 .GreaterThan(e => e.StartDate)
+                .WithMessage("'End Date' should be greater that 'Start Date'")
                 .NotEmpty()
                 .NotNull();
 
