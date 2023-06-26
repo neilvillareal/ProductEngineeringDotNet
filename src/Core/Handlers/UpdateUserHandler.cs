@@ -1,13 +1,9 @@
-﻿namespace Infrastructure.Handlers
+﻿namespace Core.Handlers
 {
-    using System;
     using Core.Command;
     using Core.Services;
     using Core.Shared;
     using Domain.Entities;
-    using Domain.Exceptions;
-    using Infrastructure.Data;
-    using Microsoft.EntityFrameworkCore;
 
     public class UpdateUserHandler : ICommandHandler<UpdateUserCommand, User>
 	{

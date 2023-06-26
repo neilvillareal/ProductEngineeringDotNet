@@ -1,8 +1,7 @@
-﻿using System;
-using MediatR;
-
-namespace Core.Shared
+﻿namespace Core.Shared
 {
+    using MediatR;
+
     public interface ICommandHandler<in TCommand, TResponse> : IRequestHandler<TCommand, TResponse>
         where TCommand : ICommand<TResponse>
     {

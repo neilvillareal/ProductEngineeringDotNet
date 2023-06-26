@@ -92,7 +92,7 @@
         {
             var command = new CreateUserCommand(user);
 
-            userService.Setup(m => m.GetUserByEmailAddressAsync("neilvillareal@gmail.com")).ReturnsAsync(user);
+            userService.Setup(m => m.GetUserByEmailAddress("neilvillareal@gmail.com")).ReturnsAsync(user);
 
             var result = await validator.TestValidateAsync(command);
 

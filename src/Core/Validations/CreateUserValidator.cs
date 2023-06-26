@@ -33,7 +33,7 @@
             RuleFor(u => u.User.Email)
                 .MustAsync(async (email, cancellationToken) =>
 				{
-					var user = await _userService.GetUserByEmailAddressAsync(email!);
+					var user = await _userService.GetUserByEmailAddress(email!);
 
 					return user is null;
 				}).WithMessage("'Email' already exists");

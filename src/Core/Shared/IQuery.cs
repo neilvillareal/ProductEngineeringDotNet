@@ -1,8 +1,7 @@
-﻿using System;
-using MediatR;
-
-namespace Core.Shared
+﻿namespace Core.Shared
 {
+    using MediatR;
+
     public interface IQuery<out TResponse> : IRequest<TResponse>
     {
     }

@@ -13,6 +13,7 @@
     <None Remove="Shared\" />
     <None Remove="Behavior\" />
     <None Remove="Services\" />
+    <None Remove="Handlers\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Command\" />
@@ -21,6 +22,7 @@
     <Folder Include="Shared\" />
     <Folder Include="Behavior\" />
     <Folder Include="Services\" />
+    <Folder Include="Handlers\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />

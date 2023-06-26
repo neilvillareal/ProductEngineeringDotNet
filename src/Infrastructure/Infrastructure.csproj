@@ -7,13 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Handlers\" />
     <None Remove="Data\" />
     <None Remove="Data\Configurations\" />
     <None Remove="Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Handlers\" />
     <Folder Include="Data\" />
     <Folder Include="Data\Configurations\" />
     <Folder Include="Services\" />

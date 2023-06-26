@@ -1,13 +1,9 @@
-﻿namespace Infrastructure.Handlers
+﻿namespace Core.Handlers
 {
-    using System;
-    using System.Threading;
-    using System.Threading.Tasks;
     using Core.Command;
     using Core.Services;
     using Core.Shared;
     using Domain.Entities;
-    using Infrastructure.Data;
 
     public class CreateUserHandler : ICommandHandler<CreateUserCommand, User>
 	{

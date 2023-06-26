@@ -2,12 +2,10 @@
 {
     using System;
     using System.Threading;
-    using Azure.Core;
     using Core.Services;
     using Domain.Entities;
     using Domain.Exceptions;
     using Infrastructure.Data;
-    using MediatR;
     using Microsoft.EntityFrameworkCore;
 
     public class UserService : IUserService
@@ -27,7 +25,7 @@
             return user;
         }
 
-        public async Task<User> GetUserByEmailAddressAsync(string emailAddress)
+        public async Task<User?> GetUserByEmailAddress(string emailAddress)
         {
             return await _appDbContext.Users
                             .AsNoTracking()

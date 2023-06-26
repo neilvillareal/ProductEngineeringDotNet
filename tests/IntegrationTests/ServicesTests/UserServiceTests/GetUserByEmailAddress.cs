@@ -55,11 +55,11 @@ namespace IntegrationTests.ServicesTests.UserServiceTests
         [TestCase("nEilvIllaReaL@gmail.com", true)]
         [TestCase("nEil02@gmail.com", false)]
         [TestCase("nelvilareal@gmail.com", false)]
-        public async Task Should_GetUserByEmailAddressAsync_Return_ExistingUser(string email, bool shouldExists)
+        public async Task Should_GetUserByEmailAddressAsync_Return_ExistingUser(string email, bool expectedResult)
         {
-            var actualResult = await Service.GetUserByEmailAddressAsync(email);
+            var actualResult = await Service.GetUserByEmailAddress(email);
 
-            Assert.AreEqual(shouldExists, actualResult is not null);
+            Assert.That(actualResult is not null, Is.EqualTo(expectedResult));
         }
     }
 }

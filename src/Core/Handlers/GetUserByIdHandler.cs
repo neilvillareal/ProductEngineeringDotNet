@@ -1,14 +1,9 @@
-﻿namespace Infrastructure.Handlers
+﻿namespace Core.Handlers
 {
-    using System;
     using Core.Queries;
     using Core.Services;
     using Core.Shared;
     using Domain.Entities;
-    using Domain.Exceptions;
-    using Infrastructure.Data;
-    using MediatR;
-    using Microsoft.EntityFrameworkCore;
 
     public class GetUserByIdHandler : IQueryHandler<GetUserByIdQuery, User>
     {
